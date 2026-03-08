@@ -2,6 +2,6 @@
 pandas>=2.2
 numpy>=1.26
 plotly>=5.24
-scikit-learn>=1.5
+scikit-learn==1.6.1
 joblib>=1.4
 tabpfn>=0.1
