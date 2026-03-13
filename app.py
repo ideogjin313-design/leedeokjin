@@ -20,36 +20,53 @@ px.defaults.template = "plotly_white"
 st.markdown(
     """
     <style>
-    .stApp, [data-testid="stAppViewContainer"], .main { background-color: #ffffff !important; color: #0f172a; }
-    [data-testid="stHeader"] { background: #ffffff !important; }
+    :root {
+        --brand-navy: #13293d;
+        --brand-navy-2: #1f3b52;
+        --brand-slate: #61788b;
+        --brand-soft: #eef4f7;
+        --brand-soft-2: #f7fafb;
+        --brand-border: #d8e2e8;
+        --brand-red: #bb4b4b;
+        --brand-red-soft: #f8e8e6;
+        --brand-green: #567c70;
+        --brand-green-soft: #edf5f2;
+        --brand-gray-soft: #f1f3f5;
+        --brand-text: #13293d;
+        --brand-muted: #627789;
+    }
+    .stApp, [data-testid="stAppViewContainer"], .main { background-color: #fbfcfd !important; color: var(--brand-text); }
+    [data-testid="stHeader"] { background: #fbfcfd !important; }
     [data-testid="stToolbar"] { right: 0.5rem; }
-    h1, h2, h3, h4, h5, h6, p, label, span { color: #0f172a; }
-    .stCaption { color: #475569 !important; }
-    [data-testid="stMarkdownContainer"] p { color: #0f172a; }
-    [data-baseweb="select"] > div { background: #ffffff !important; color: #0f172a !important; border-color: #cbd5e1 !important; }
-    .stNumberInput input, .stTextInput input { background: #ffffff !important; color: #0f172a !important; }
-    [data-testid="stPlotlyChart"] > div { background: #ffffff !important; border-radius: 8px; }
+    h1, h2, h3, h4, h5, h6, p, label, span { color: var(--brand-text); }
+    .stCaption { color: var(--brand-muted) !important; }
+    [data-testid="stMarkdownContainer"] p { color: var(--brand-text); }
+    [data-baseweb="select"] > div { background: #ffffff !important; color: var(--brand-text) !important; border-color: var(--brand-border) !important; }
+    .stNumberInput input, .stTextInput input { background: #ffffff !important; color: var(--brand-text) !important; }
+    [data-testid="stPlotlyChart"] > div { background: #ffffff !important; border-radius: 12px; border: 1px solid #d8e2e8; box-shadow: 0 8px 20px rgba(19, 41, 61, 0.04); }
     .js-plotly-plot .plot-container { background: #ffffff !important; }
     .js-plotly-plot .svg-container { background: #ffffff !important; }
     .js-plotly-plot .plotly .main-svg { background: transparent !important; }
     .stButton > button {
         background: #ffffff !important;
-        color: #0f172a !important;
-        border: 1px solid #cbd5e1 !important;
+        color: var(--brand-navy) !important;
+        border: 1px solid var(--brand-border) !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
     }
-    .stButton > button:hover { background: #f8fafc !important; }
-    [data-baseweb="slider"] > div { background: #e2e8f0 !important; }
+    .stButton > button:hover { background: var(--brand-soft-2) !important; border-color: var(--brand-slate) !important; }
+    [data-baseweb="slider"] > div { background: #e3e9ed !important; }
     .stSlider [data-baseweb="slider"] div[style*="rgb(26, 108, 255)"],
     .stSlider [data-baseweb="slider"] div[style*="rgb(26,108,255)"] {
-        background-color: #8b2f2f !important;
-        border-color: #8b2f2f !important;
+        background-color: var(--brand-red) !important;
+        border-color: var(--brand-red) !important;
     }
-    [data-baseweb="slider"] [role="slider"] { background: #8b2f2f !important; border-color: #8b2f2f !important; }
+    [data-baseweb="slider"] [role="slider"] { background: var(--brand-red) !important; border-color: var(--brand-red) !important; }
     html, body, .stApp, [data-testid="stAppViewContainer"] { color-scheme: only light !important; }
     div[data-testid="stCheckbox"] { background: transparent !important; }
-    div[data-testid="stCheckbox"] * { color: #0f172a !important; }
+    div[data-testid="stCheckbox"] * { color: var(--brand-text) !important; }
     div[data-testid="stCheckbox"] input[type="checkbox"] {
-        accent-color: #dc2626 !important;
+        accent-color: var(--brand-red) !important;
         background: #ffffff !important;
         background-color: #ffffff !important;
         color-scheme: only light !important;
@@ -62,16 +79,16 @@ st.markdown(
     div[data-testid="stCheckbox"] input[type="checkbox"]::after {
         forced-color-adjust: none !important;
     }
-    [data-testid="stWidgetLabel"] { color: #0f172a !important; }
-    [data-testid="stToggle"] label { color: #0f172a !important; }
+    [data-testid="stWidgetLabel"] { color: var(--brand-text) !important; }
+    [data-testid="stToggle"] label { color: var(--brand-text) !important; }
     [data-testid="stToggle"] div[role="switch"] {
-        background: #e2e8f0 !important;
-        border: 1px solid #cbd5e1 !important;
+        background: #e4eaee !important;
+        border: 1px solid var(--brand-border) !important;
     }
     .stExpander { background: #ffffff !important; border-radius: 10px; }
     [data-testid="stExpander"] {
         background: #ffffff !important;
-        border: 1px solid #e2e8f0 !important;
+        border: 1px solid var(--brand-border) !important;
         border-radius: 10px !important;
     }
     [data-testid="stExpander"] details {
@@ -80,124 +97,209 @@ st.markdown(
     }
     [data-testid="stExpander"] summary {
         background: #ffffff !important;
-        color: #0f172a !important;
+        color: #13293d !important;
         border-radius: 10px !important;
     }
     [data-testid="stExpander"] summary:hover {
-        background: #f8fafc !important;
+        background: var(--brand-soft-2) !important;
     }
     [data-testid="stExpander"] summary svg {
-        color: #0f172a !important;
-        fill: #0f172a !important;
+        color: var(--brand-text) !important;
+        fill: var(--brand-text) !important;
     }
     [data-testid="stDataFrame"] {
         background: #ffffff !important;
-        border: 1px solid #e2e8f0 !important;
+        border: 1px solid var(--brand-border) !important;
         border-radius: 10px !important;
     }
     [data-testid="stDataFrame"] [role="grid"] { background: #ffffff !important; }
     [data-testid="stDataFrame"] [role="row"] { background: transparent !important; }
-    [data-testid="stDataFrame"] [role="columnheader"] { background: #f1f5f9 !important; color:#0f172a !important; }
+    [data-testid="stDataFrame"] [role="columnheader"] { background: var(--brand-soft) !important; color:var(--brand-text) !important; }
     [data-testid="stDataFrame"] [role="gridcell"] { background: transparent !important; }
     [data-testid="stTable"] { background: #ffffff !important; }
-    [data-testid="stDataFrame"] * { color: #0f172a !important; }
-    [data-testid="stDataFrame"] thead tr th { background-color: #f1f5f9 !important; color:#0f172a !important; font-weight: 700 !important; }
-    [data-testid="stDataFrame"] tbody tr:nth-child(even) td { background-color: #f8fafc !important; }
+    [data-testid="stDataFrame"] * { color: var(--brand-text) !important; }
+    [data-testid="stDataFrame"] thead tr th { background-color: var(--brand-soft) !important; color:var(--brand-text) !important; font-weight: 700 !important; }
+    [data-testid="stDataFrame"] tbody tr:nth-child(even) td { background-color: var(--brand-soft-2) !important; }
     [data-testid="stDataFrame"] tbody tr:nth-child(odd) td { background-color: #ffffff !important; }
-    [data-testid="stDataFrame"] [role="gridcell"] { color:#0f172a !important; }
+    [data-testid="stDataFrame"] [role="gridcell"] { color:var(--brand-text) !important; }
     .stAlert { border-radius: 10px; }
     .block-container { padding-top: 2.4rem; padding-bottom: 0.4rem; }
     .panel {
         background: #ffffff;
-        border: 1px solid #e7e9ef;
-        border-radius: 14px;
-        padding: 8px 10px;
+        border: 1px solid var(--brand-border);
+        border-radius: 16px;
+        padding: 10px 12px;
         margin-bottom: 6px;
         min-height: 84px;
+        box-shadow: 0 6px 20px rgba(19, 41, 61, 0.05);
     }
-    .kpi-title { font-size: 0.94rem; color: #70757f; margin-bottom: 6px; line-height: 1.25; text-align: center; }
-    .kpi-value { font-size: 1.28rem; font-weight: 800; color: #1f2937; white-space: normal; line-height: 1.3; text-align: center; }
+    .kpi-title { font-size: 0.94rem; color: var(--brand-slate); margin-bottom: 6px; line-height: 1.25; text-align: center; }
+    .kpi-value { font-size: 1.28rem; font-weight: 800; color: var(--brand-navy); white-space: normal; line-height: 1.3; text-align: center; }
     .section-title { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
-    .panel-title { font-size: 1.08rem; font-weight: 800; color: #0f172a; margin-bottom: 3px; letter-spacing: 0.2px; }
-    .panel-subtitle { font-size: 0.82rem; color: #5b6577; }
+    .panel-title { font-size: 1.08rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 3px; letter-spacing: 0.2px; }
+    .panel-subtitle { font-size: 0.82rem; color: var(--brand-slate); }
     .plain-title {
         font-size: 1.34rem;
         font-weight: 800;
-        color: #0f172a;
+        color: var(--brand-navy);
         margin: 8px 0 10px 0;
         padding-bottom: 8px;
-        border-bottom: 1px solid #dbe1ea;
+        border-bottom: 1px solid var(--brand-border);
     }
-    .log-card { background: #ffffff; border: 1px solid #e7e9ef; border-radius: 12px; padding: 6px 10px; }
-    .log-item { margin-bottom: 4px; color: #1f2937; font-size: 0.92rem; line-height: 1.25; font-weight: 600; }
-    .log-item b { display: inline-block; min-width: 64px; color: #334155; font-size: 0.94rem; font-weight: 800; }
+    .log-card { background: #ffffff; border: 1px solid var(--brand-border); border-radius: 14px; padding: 8px 12px; }
+    .log-item { margin-bottom: 4px; color: var(--brand-text); font-size: 0.92rem; line-height: 1.25; font-weight: 600; }
+    .log-item b { display: inline-block; min-width: 64px; color: var(--brand-navy); font-size: 0.94rem; font-weight: 800; }
     .hero {
         background: #ffffff;
-        color: #0f172a;
-        border-radius: 16px;
-        padding: 12px 16px;
-        border: 1px solid #dbe1ea;
+        color: var(--brand-navy);
+        border-radius: 18px;
+        padding: 18px 20px 16px 20px;
+        border: 1px solid var(--brand-border);
+        border-top: 4px solid var(--brand-navy);
         margin-bottom: 6px;
         margin-top: 10px;
+        box-shadow: 0 8px 24px rgba(19, 41, 61, 0.06);
     }
-    .hero-title { font-size: 2.55rem; line-height: 1.15; font-weight: 950; letter-spacing: 0.2px; margin-bottom: 4px; padding-top: 0; color:#0f172a; }
-    .hero-sub { font-size: 0.90rem; color: #475569; }
-    .priority-card { border-radius: 14px; padding: 12px 14px; border: 1px solid #d1d5db; }
-    .priority-red { background: #fff1f2; border-color: #fecdd3; }
-    .priority-yellow { background: #fffbeb; border-color: #fde68a; }
-    .priority-green { background: #ecfdf5; border-color: #86efac; }
-    .priority-title { font-size: 0.98rem; font-weight: 800; margin-bottom: 6px; color: #111827; }
-    .priority-text { font-size: 0.9rem; color: #111827; line-height: 1.45; font-weight: 600; }
+    .hero-title { font-size: 2.75rem; line-height: 1.1; font-weight: 950; letter-spacing: -0.02em; margin-bottom: 6px; padding-top: 0; color:var(--brand-navy); }
+    .hero-sub { font-size: 0.94rem; color: var(--brand-slate); }
+    .priority-card { border-radius: 14px; padding: 12px 14px; border: 1px solid var(--brand-border); }
+    .priority-red { background: var(--brand-red-soft); border-color: #e4b6b4; }
+    .priority-yellow { background: #f6f1de; border-color: #ddcf9e; }
+    .priority-green { background: var(--brand-green-soft); border-color: #b8d3ca; }
+    .priority-title { font-size: 0.98rem; font-weight: 800; margin-bottom: 6px; color: var(--brand-navy); }
+    .priority-text { font-size: 0.9rem; color: var(--brand-text); line-height: 1.45; font-weight: 600; }
     .status-card {
         background: #ffffff;
-        border: 1px solid #e7e9ef;
+        border: 1px solid var(--brand-border);
         border-radius: 18px;
         padding: 18px 20px;
         margin-bottom: 8px;
-        box-shadow: none;
+        box-shadow: 0 6px 20px rgba(19, 41, 61, 0.05);
         min-height: 190px;
     }
     .status-card-title {
         font-size: 1.44rem;
         font-weight: 900;
-        color: #111111;
+        color: var(--brand-navy);
         padding-bottom: 10px;
-        border-bottom: 1px solid #dbe1ea;
+        border-bottom: 1px solid var(--brand-border);
         margin-bottom: 12px;
     }
     .status-line {
         font-size: 1.16rem;
         font-weight: 800;
         line-height: 2.0;
-        color: #1d1311;
+        color: var(--brand-text);
     }
     .status-summary-box {
-        border: 1px solid #1f2937;
-        border-radius: 14px;
-        padding: 10px 12px 12px 12px;
+        border: 1px solid var(--brand-border);
+        border-left: 4px solid var(--brand-navy);
+        border-radius: 16px;
+        padding: 14px 16px 16px 16px;
         margin: 4px 0 8px 0;
         background: #ffffff;
+        box-shadow: 0 8px 24px rgba(19, 41, 61, 0.06);
     }
     .status-summary-title {
-        font-size: 1.62rem;
+        font-size: 1.72rem;
         font-weight: 900;
-        color: #0f172a;
+        color: var(--brand-navy);
         margin: 0 0 10px 0;
         padding-bottom: 8px;
-        border-bottom: 1px solid #dbe1ea;
+        border-bottom: 1px solid var(--brand-border);
     }
     .checklist-title {
         font-size: 1.52rem;
         font-weight: 900;
-        color: #0f172a;
+        color: var(--brand-navy);
         margin: 8px 0 10px 0;
         padding-bottom: 8px;
-        border-bottom: 1px solid #dbe1ea;
+        border-bottom: 1px solid var(--brand-border);
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+
+BRAND_PRIMARY = "#13293d"
+BRAND_SECONDARY = "#1f3b52"
+BRAND_MUTED = "#61788b"
+BRAND_BORDER = "#d8e2e8"
+BRAND_SOFT = "#eef4f7"
+BRAND_SOFT_ALT = "#f7fafb"
+BRAND_SUCCESS = "#6f8f85"
+BRAND_SUCCESS_SOFT = "rgba(111, 143, 133, 0.16)"
+BRAND_WARNING = "#8b4d57"
+BRAND_WARNING_SOFT = "rgba(139, 77, 87, 0.12)"
+BRAND_NEUTRAL_SOFT = "rgba(216, 226, 232, 0.60)"
+BRAND_COMPARE_COLORS = ["#6f8f85", "#7b94a3", "#8b7c88", "#a4b4bd", "#8c625e"]
+INGREDIENT_COLOR_MAP = {
+    "음이온성 계면활성제": "#1f3b52",
+    "양쪽성 계면활성제": "#6f8f85",
+    "비이온성 계면활성제": "#7b94a3",
+    "아미노산계 계면활성제": "#8c625e",
+    "컨디셔닝 폴리머": "#8b4d57",
+    "가용화 보조": "#b97a7a",
+    "계면활성제": "#6f8f85",
+    "염/점도조절": "#8b4d57",
+    "pH조절": "#b97a7a",
+    "컨디셔닝": "#8b4d57",
+    "보존": "#a4b4bd",
+    "향/기능": "#8c625e",
+    "원료사전 확인 필요": "#b8c6cf",
+}
+BRAND_TABLE_STYLES = [
+    {"selector": "table", "props": [("border-collapse", "separate"), ("border-spacing", "0"), ("width", "100%"), ("border", f"1px solid {BRAND_BORDER}"), ("border-radius", "10px"), ("overflow", "hidden")]},
+    {"selector": "thead th", "props": [("background-color", BRAND_SOFT), ("color", BRAND_PRIMARY), ("font-weight", "800"), ("border-bottom", f"1px solid {BRAND_BORDER}"), ("padding", "8px 10px")]},
+    {"selector": "tbody td", "props": [("padding", "8px 10px"), ("border-bottom", "1px solid #edf2f5"), ("color", BRAND_PRIMARY)]},
+    {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
+    {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", BRAND_SOFT_ALT)]},
+    {"selector": "td, th", "props": [("border-color", BRAND_BORDER)]},
+]
+
+
+def apply_brand_plot_layout(fig: go.Figure, height: int | None = None, showlegend: bool = True):
+    fig.update_layout(
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        font=dict(color=BRAND_PRIMARY, size=13),
+        legend=dict(
+            bgcolor="rgba(255,255,255,0.94)",
+            bordercolor=BRAND_BORDER,
+            borderwidth=1,
+            font=dict(color=BRAND_PRIMARY, size=11),
+        ),
+        hoverlabel=dict(bgcolor="#ffffff", bordercolor=BRAND_BORDER, font=dict(color=BRAND_PRIMARY)),
+        showlegend=showlegend,
+    )
+    if height is not None:
+        fig.update_layout(height=height)
+    fig.update_xaxes(
+        showline=True,
+        linecolor="#8fa1ae",
+        linewidth=1.6,
+        tickfont=dict(color=BRAND_MUTED, size=12),
+        title_font=dict(color=BRAND_PRIMARY, size=15),
+        gridcolor="#edf2f5",
+        zeroline=False,
+    )
+    fig.update_yaxes(
+        showline=True,
+        linecolor="#8fa1ae",
+        linewidth=1.6,
+        tickfont=dict(color=BRAND_MUTED, size=12),
+        title_font=dict(color=BRAND_PRIMARY, size=15),
+        gridcolor="#e7edf1",
+        zeroline=False,
+    )
+
+
+def apply_brand_table_style(styler):
+    return (
+        styler.set_table_styles(BRAND_TABLE_STYLES)
+        .set_properties(**{"background-color": "#ffffff", "color": BRAND_PRIMARY})
+    )
 
 
 @st.cache_data
@@ -822,7 +924,7 @@ def plotly_with_click_value(fig: go.Figure, chart_key: str, x_label: str, y_labe
         template="plotly_white",
         paper_bgcolor="#ffffff",
         plot_bgcolor="#ffffff",
-        font=dict(color="#0f172a"),
+        font=dict(color="#13293d"),
     )
     fig.update_layout(clickmode="event+select")
 
@@ -911,7 +1013,7 @@ def render_rheology_type_distribution(selected_first: pd.Series, selected_batch_
     judge_type = predicted_type if predicted_type != "-" else current_type
     is_match = str(judge_type).upper() == str(target_type).upper()
     result_text = "목표 타입 일치" if is_match else "목표 타입 불일치"
-    result_color = "#16a34a" if is_match else "#dc2626"
+    result_color = "#567c70" if is_match else "#bb4b4b"
 
     type_cols = st.columns(3)
     type_values = [
@@ -980,7 +1082,7 @@ with header_time_col:
     now_top = datetime.now()
     st.markdown(
         f"""
-        <div style='text-align:right; margin-top:8px; font-weight:700; color:#0f172a; line-height:1.35;'>
+        <div style='text-align:right; margin-top:8px; font-weight:700; color:#13293d; line-height:1.35;'>
           <div style='font-size:1.02rem;'>{now_top.strftime('%Y-%m-%d')}</div>
           <div style='font-size:1.02rem;'>{now_top.strftime('%H:%M:%S')}</div>
         </div>
@@ -1081,7 +1183,7 @@ type_match_card = (
     else current_type_card.upper() == TARGET_RHEOLOGY_TYPE
 )
 result_text = "목표 타입 일치" if type_match_card else "목표 타입 불일치"
-result_color = "#16a34a" if type_match_card else "#dc2626"
+result_color = "#567c70" if type_match_card else "#bb4b4b"
 viscosity_grade_text = selected_grade_global if selected_grade_global is not None else "계산불가"
 if sim_active_global and sim_estimated_score_global is not None and selected_grade_global is not None:
     viscosity_grade_text = f"{selected_grade_global} -> {grade_from_score(float(sim_estimated_score_global))}"
@@ -1109,7 +1211,7 @@ for idx, (col, (title, value)) in enumerate(zip(row_cols, kpi_row)):
             parts = [str(p).strip() for p in str(value).split("->")]
             colored_parts = []
             for p in parts:
-                color = "#16a34a" if p == "안정" else "#dc2626"
+                color = "#567c70" if p == "안정" else "#bb4b4b"
                 colored_parts.append(f"<span style='color:{color};'>{p}</span>")
             value_html = " <span style='color:#64748b;'>-></span> ".join(colored_parts)
             st.markdown(
@@ -1168,7 +1270,7 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
                     y=lower,
                     mode="lines",
                     fill="tonexty",
-                    fillcolor="rgba(122, 156, 140, 0.20)",
+                    fillcolor="rgba(123, 148, 163, 0.18)",
                     line=dict(width=0),
                     name="정상 범위",
                 )
@@ -1180,12 +1282,11 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
                     y=selected_y,
                     mode="lines",
                     name=f"기준 Batch {selected_batch_id}",
-                    line=dict(color="#2563eb", width=2.5),
+                    line=dict(color=BRAND_SECONDARY, width=2.6),
                 )
             )
         if show_compare_lines:
             compare_ids = sorted([rid for rid in ref_ids if rid != selected_batch_id], reverse=True)[:3]
-            compare_palette = ["#b45309", "#7c3aed", "#0f766e", "#be123c", "#2563eb"]
             for idx, cid in enumerate(compare_ids):
                 row = df[df["ID"] == cid].iloc[0]
                 x, y = get_batch_curve(row)
@@ -1196,22 +1297,19 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
                             y=y,
                             mode="lines",
                             name=f"ID {cid}",
-                            line=dict(width=1.4, color=compare_palette[idx % len(compare_palette)]),
-                            opacity=0.75,
+                            line=dict(width=1.8, color=BRAND_COMPARE_COLORS[idx % len(BRAND_COMPARE_COLORS)]),
+                            opacity=0.85,
                         )
                     )
         if fig_cmp.data:
+            apply_brand_plot_layout(fig_cmp, height=430)
             fig_cmp.update_layout(
-                height=430,
                 margin=dict(l=10, r=10, t=10, b=10),
                 xaxis_type="log",
                 yaxis_type="log",
                 xaxis_title="Log 전단속도",
                 yaxis_title="Log 점도",
-                plot_bgcolor="#ffffff",
-                paper_bgcolor="#ffffff",
-                legend=dict(bgcolor="rgba(255,255,255,0.9)", bordercolor="rgba(148,163,184,0.45)", borderwidth=1, font=dict(size=12, color="#0f172a")),
-                font=dict(color="#0f172a", size=15),
+                font=dict(color=BRAND_PRIMARY, size=15),
             )
             fig_cmp.update_xaxes(
                 showgrid=False,
@@ -1219,30 +1317,30 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
                 minor=dict(showgrid=False),
                 showline=True,
                 linewidth=2.2,
-                linecolor="#334155",
+                linecolor="#8fa1ae",
                 mirror=False,
                 ticks="outside",
                 ticklen=4,
                 tickwidth=1,
-                tickcolor="#64748b",
-                tickfont=dict(color="#1f2937", size=13),
-                title_font=dict(color="#111827", size=16),
+                tickcolor="#8fa1ae",
+                tickfont=dict(color=BRAND_MUTED, size=13),
+                title_font=dict(color=BRAND_PRIMARY, size=16),
             )
             fig_cmp.update_yaxes(
                 showgrid=True,
-                gridcolor="rgba(148,163,184,0.16)",
+                gridcolor="#e7edf1",
                 zeroline=False,
                 minor=dict(showgrid=False),
                 showline=True,
                 linewidth=2.2,
-                linecolor="#334155",
+                linecolor="#8fa1ae",
                 mirror=False,
                 ticks="outside",
                 ticklen=4,
                 tickwidth=1,
-                tickcolor="#64748b",
-                tickfont=dict(color="#1f2937", size=13),
-                title_font=dict(color="#111827", size=16),
+                tickcolor="#8fa1ae",
+                tickfont=dict(color=BRAND_MUTED, size=13),
+                title_font=dict(color=BRAND_PRIMARY, size=16),
             )
             plotly_with_click_value(fig_cmp, f"curve_compare_exp_{selected_batch_id}", "Log 전단속도", "Log 점도", show_idle_hint=False)
     with c2:
@@ -1253,18 +1351,26 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
                 top_ing["성분표기"] = top_ing["name"].apply(ingredient_label)
                 top_ing["기능"] = top_ing["name"].apply(ingredient_category)
                 top_ing = top_ing.sort_values("amount", ascending=True)
-                fig_i = px.bar(top_ing, x="amount", y="성분표기", orientation="h", color="기능", height=300, hover_data={"name": True, "기능": True, "amount": ":.2f"})
+                fig_i = px.bar(
+                    top_ing,
+                    x="amount",
+                    y="성분표기",
+                    orientation="h",
+                    color="기능",
+                    color_discrete_map=INGREDIENT_COLOR_MAP,
+                    height=300,
+                    hover_data={"name": True, "기능": True, "amount": ":.2f"},
+                )
+                fig_i.update_traces(marker_line_width=0)
+                apply_brand_plot_layout(fig_i, height=300, showlegend=False)
                 fig_i.update_layout(
                     margin=dict(l=10, r=10, t=60, b=10),
                     yaxis_title="성분",
                     xaxis_title="투입량",
-                    showlegend=False,
-                    font=dict(color="#0f172a", size=15),
-                    plot_bgcolor="#ffffff",
-                    paper_bgcolor="#ffffff",
+                    font=dict(color=BRAND_PRIMARY, size=15),
                 )
-                fig_i.update_xaxes(tickfont=dict(color="#1f2937", size=13), title_font=dict(color="#111827", size=16))
-                fig_i.update_yaxes(tickfont=dict(color="#1f2937", size=13), title_font=dict(color="#111827", size=16))
+                fig_i.update_xaxes(showline=True, linecolor="#8fa1ae", tickfont=dict(color=BRAND_MUTED, size=13), title_font=dict(color=BRAND_PRIMARY, size=16))
+                fig_i.update_yaxes(showline=True, linecolor="#8fa1ae", tickfont=dict(color=BRAND_MUTED, size=13), title_font=dict(color=BRAND_PRIMARY, size=16))
                 st.plotly_chart(fig_i, use_container_width=True)
         st.markdown("<div class='plain-title' style='margin-top:-12px;'>타입 불일치 원인 분석</div>", unsafe_allow_html=True)
         root_view = root_df.copy()
@@ -1281,18 +1387,9 @@ with st.expander("목표 불일치 원인 파악", expanded=True):
             root_styler = (
                 root_view.style
                 .format({"기여도": "{:.1f}", "현재값": "{:.2f}", "기준값(q50)": "{:.2f}"})
-                .bar(subset=["기여도"], color="#94a3b8", vmin=0)
-                .set_table_styles(
-                    [
-                        {"selector": "thead th", "props": [("background-color", "#f1f5f9"), ("color", "#0f172a"), ("font-weight", "700")]},
-                        {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
-                        {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f8fafc")]},
-                        {"selector": "td, th", "props": [("border-color", "#e2e8f0")]},
-                    ]
-                )
-                .set_properties(**{"background-color": "#ffffff", "color": "#0f172a"})
+                .bar(subset=["기여도"], color="#b3c2cf", vmin=0)
             )
-            st.table(root_styler)
+            st.table(apply_brand_table_style(root_styler))
 
 with st.expander("점도 등급 안정화 판정", expanded=True):
     c1, c2 = st.columns([1, 1], gap="large")
@@ -1303,40 +1400,37 @@ with st.expander("점도 등급 안정화 판정", expanded=True):
             st.info(score_msg)
         else:
             fig_grade = go.Figure()
-            fig_grade.add_vrect(x0=0, x1=1, fillcolor="rgba(180,180,180,0.25)", line_width=0)
-            fig_grade.add_vrect(x0=1, x1=3, fillcolor="rgba(120,200,120,0.2)", line_width=0)
-            fig_grade.add_vrect(x0=3, x1=4, fillcolor="rgba(255,120,120,0.2)", line_width=0)
-            fig_grade.add_annotation(x=0.5, y=0.95, xref="x", yref="paper", text="저점도 구간", showarrow=False, font=dict(color="#6b7280", size=12))
-            fig_grade.add_annotation(x=2.0, y=0.95, xref="x", yref="paper", text="안정 구간", showarrow=False, font=dict(color="#166534", size=12))
-            fig_grade.add_annotation(x=3.5, y=0.95, xref="x", yref="paper", text="고점도 구간", showarrow=False, font=dict(color="#b91c1c", size=12))
-            fig_grade.add_trace(go.Scatter(x=[float(selected_score_value)], y=[0], mode="markers+text", text=[f"현재 ID {selected_batch_id}"], textposition="top center", marker=dict(size=14, color="#2563eb")))
+            fig_grade.add_vrect(x0=0, x1=1, fillcolor=BRAND_NEUTRAL_SOFT, line_width=0)
+            fig_grade.add_vrect(x0=1, x1=3, fillcolor=BRAND_SUCCESS_SOFT, line_width=0)
+            fig_grade.add_vrect(x0=3, x1=4, fillcolor=BRAND_WARNING_SOFT, line_width=0)
+            fig_grade.add_annotation(x=0.5, y=0.95, xref="x", yref="paper", text="저점도 구간", showarrow=False, font=dict(color=BRAND_MUTED, size=12))
+            fig_grade.add_annotation(x=2.0, y=0.95, xref="x", yref="paper", text="안정 구간", showarrow=False, font=dict(color=BRAND_SUCCESS, size=12))
+            fig_grade.add_annotation(x=3.5, y=0.95, xref="x", yref="paper", text="고점도 구간", showarrow=False, font=dict(color=BRAND_WARNING, size=12))
+            fig_grade.add_trace(go.Scatter(x=[float(selected_score_value)], y=[0], mode="markers+text", text=[f"현재 ID {selected_batch_id}"], textposition="top center", marker=dict(size=14, color=BRAND_SECONDARY)))
             if sim_estimated_score_global is not None:
-                fig_grade.add_trace(go.Scatter(x=[float(sim_estimated_score_global)], y=[0], mode="markers+text", text=["시뮬레이션"], textposition="bottom center", marker=dict(size=14, color="#16a34a", symbol="diamond")))
+                fig_grade.add_trace(go.Scatter(x=[float(sim_estimated_score_global)], y=[0], mode="markers+text", text=["시뮬레이션"], textposition="bottom center", marker=dict(size=14, color=BRAND_SUCCESS, symbol="diamond")))
+            apply_brand_plot_layout(fig_grade, height=520, showlegend=False)
             fig_grade.update_layout(
-                height=520,
                 margin=dict(l=10, r=10, t=10, b=10),
                 xaxis_title="점도 등급 점수 (0~4)",
                 yaxis_title="",
                 xaxis=dict(range=[0, 4], dtick=0.5, showgrid=False, zeroline=False),
                 yaxis=dict(range=[-0.4, 0.4], showticklabels=False, zeroline=False, showgrid=False),
-                plot_bgcolor="#ffffff",
-                paper_bgcolor="#ffffff",
-                font=dict(color="#0f172a", size=15),
-                showlegend=False,
+                font=dict(color=BRAND_PRIMARY, size=15),
             )
             fig_grade.update_xaxes(
-                tickfont=dict(color="#1f2937", size=13),
-                title_font=dict(color="#111827", size=16),
+                tickfont=dict(color=BRAND_MUTED, size=13),
+                title_font=dict(color=BRAND_PRIMARY, size=16),
                 showline=True,
                 linewidth=1.4,
-                linecolor="#64748b",
+                linecolor="#8fa1ae",
             )
             fig_grade.update_yaxes(
                 showgrid=True,
-                gridcolor="rgba(148,163,184,0.16)",
+                gridcolor="#e7edf1",
                 showline=True,
                 linewidth=1.4,
-                linecolor="#64748b",
+                linecolor="#8fa1ae",
             )
             st.plotly_chart(fig_grade, use_container_width=True)
     with c2:
@@ -1356,25 +1450,13 @@ with st.expander("점도 등급 안정화 판정", expanded=True):
             view["목표범위(q25~q75)"] = view.apply(lambda r: f"{r['안정권 하한(q25)']:.2f} ~ {r['안정권 상한(q75)']:.2f}", axis=1)
             view["실무범위"] = view.apply(lambda r: f"{r['실무 하한']:.2f} ~ {r['실무 상한']:.2f}", axis=1)
             view = view[["성분", "권장 조치", "현재 투입량", "권장 목표값", "목표범위(q25~q75)", "실무범위", "레드라인", "권장 변경량", "실행 액션"]]
-            guide_styler = (
-                view.style
-                .format({"현재 투입량": "{:.2f}", "권장 목표값": "{:.2f}", "권장 변경량": "{:.2f}", "레드라인": "{:.2f}"})
-                .set_table_styles(
-                    [
-                        {"selector": "thead th", "props": [("background-color", "#f1f5f9"), ("color", "#0f172a"), ("font-weight", "700")]},
-                        {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
-                        {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f8fafc")]},
-                        {"selector": "td, th", "props": [("border-color", "#e2e8f0")]},
-                    ]
-                )
-                .set_properties(**{"background-color": "#ffffff", "color": "#0f172a"})
-            )
-            st.table(guide_styler)
+            guide_styler = view.style.format({"현재 투입량": "{:.2f}", "권장 목표값": "{:.2f}", "권장 변경량": "{:.2f}", "레드라인": "{:.2f}"})
+            st.table(apply_brand_table_style(guide_styler))
         st.markdown("<div style='height:90px;'></div>", unsafe_allow_html=True)
         if not grade_msg:
-            current_type_color = "#dc2626"
-            target_type_color = "#16a34a"
-            grade_color = "#16a34a" if str(grade) == "안정" else "#dc2626"
+            current_type_color = "#bb4b4b"
+            target_type_color = "#567c70"
+            grade_color = "#567c70" if str(grade) == "안정" else "#bb4b4b"
             type_html = f"타입 상태: 현재 <span style='color:{current_type_color}; font-weight:900;'>{type_now}</span> / 목표 <span style='color:{target_type_color}; font-weight:900;'>{TARGET_RHEOLOGY_TYPE}</span>"
             grade_html = f"점도 상태: <span style='color:{grade_color}; font-weight:900;'>{grade}</span>"
             st.markdown(f"<div class='status-summary-box'><div class='status-summary-title'>현재 상태 결론</div><div class='status-line'>{type_html}</div><div class='status-line'>{grade_html}</div></div>", unsafe_allow_html=True)
@@ -1416,7 +1498,7 @@ with lower_left:
             upper = np.power(10, med + std)
             lower = np.power(10, med - std)
             fig_cmp.add_trace(go.Scatter(x=selected_x, y=upper, mode="lines", line=dict(width=0), showlegend=False))
-            fig_cmp.add_trace(go.Scatter(x=selected_x, y=lower, mode="lines", fill="tonexty", fillcolor="rgba(122, 156, 140, 0.32)", line=dict(width=0), name="정상 범위"))
+            fig_cmp.add_trace(go.Scatter(x=selected_x, y=lower, mode="lines", fill="tonexty", fillcolor="rgba(97, 120, 139, 0.18)", line=dict(width=0), name="정상 범위"))
         if selected_x is not None:
             fig_cmp.add_trace(
                 go.Scatter(
@@ -1424,7 +1506,7 @@ with lower_left:
                     y=selected_y,
                     mode="lines+markers",
                     name=f"기준 Batch {selected_batch_id}",
-                    line=dict(color="#2563eb", width=3),
+                    line=dict(color="#1f3b52", width=3),
                     opacity=0.35 if sim_active_global else 1.0,
                 )
             )
@@ -1436,7 +1518,7 @@ with lower_left:
                         y=sim_y,
                         mode="lines+markers",
                         name="시뮬레이션 적용 곡선",
-                        line=dict(color="#16a34a", width=3, dash="dot"),
+                        line=dict(color="#567c70", width=3, dash="dot"),
                     )
                 )
         if show_compare_lines:
@@ -1461,12 +1543,12 @@ with lower_left:
             st.info(score_msg)
         else:
             fig_grade = go.Figure()
-            fig_grade.add_vrect(x0=0, x1=1, fillcolor="rgba(180,180,180,0.25)", line_width=0)
-            fig_grade.add_vrect(x0=1, x1=3, fillcolor="rgba(120,200,120,0.2)", line_width=0)
-            fig_grade.add_vrect(x0=3, x1=4, fillcolor="rgba(255,120,120,0.2)", line_width=0)
-            fig_grade.add_annotation(x=0.5, y=0.95, xref="x", yref="paper", text="저점도 구간", showarrow=False, font=dict(color="#6b7280", size=12))
-            fig_grade.add_annotation(x=2.0, y=0.95, xref="x", yref="paper", text="안정 구간", showarrow=False, font=dict(color="#166534", size=12))
-            fig_grade.add_annotation(x=3.5, y=0.95, xref="x", yref="paper", text="고점도 구간", showarrow=False, font=dict(color="#b91c1c", size=12))
+            fig_grade.add_vrect(x0=0, x1=1, fillcolor="rgba(216, 226, 232, 0.55)", line_width=0)
+            fig_grade.add_vrect(x0=1, x1=3, fillcolor="rgba(86, 124, 112, 0.16)", line_width=0)
+            fig_grade.add_vrect(x0=3, x1=4, fillcolor="rgba(187, 75, 75, 0.14)", line_width=0)
+            fig_grade.add_annotation(x=0.5, y=0.95, xref="x", yref="paper", text="저점도 구간", showarrow=False, font=dict(color="#61788b", size=12))
+            fig_grade.add_annotation(x=2.0, y=0.95, xref="x", yref="paper", text="안정 구간", showarrow=False, font=dict(color="#567c70", size=12))
+            fig_grade.add_annotation(x=3.5, y=0.95, xref="x", yref="paper", text="고점도 구간", showarrow=False, font=dict(color="#bb4b4b", size=12))
             fig_grade.add_trace(
                 go.Scatter(
                     x=[float(selected_score_value)],
@@ -1475,7 +1557,7 @@ with lower_left:
                     name="현재",
                     text=[f"현재 ID {selected_batch_id}"],
                     textposition="top center",
-                    marker=dict(size=14, color="#2563eb"),
+                    marker=dict(size=14, color="#1f3b52"),
                 )
             )
             if sim_estimated_score_global is not None:
@@ -1487,7 +1569,7 @@ with lower_left:
                         name="시뮬레이션",
                         text=["시뮬레이션"],
                         textposition="bottom center",
-                        marker=dict(size=14, color="#16a34a", symbol="diamond"),
+                        marker=dict(size=14, color="#567c70", symbol="diamond"),
                     )
                 )
                 fig_grade.add_annotation(
@@ -1496,7 +1578,7 @@ with lower_left:
                     yref="y",
                     text="적용 후",
                     showarrow=False,
-                    font=dict(color="#15803d", size=11),
+                    font=dict(color="#567c70", size=11),
                 )
             fig_grade.update_layout(
                 height=520,
@@ -1561,13 +1643,13 @@ with lower_right:
                 .format({"기여도": "{:.1f}", "현재값": "{:.2f}", "기준값(q50)": "{:.2f}"})
                 .set_table_styles(
                     [
-                        {"selector": "thead th", "props": [("background-color", "#f1f5f9"), ("color", "#0f172a"), ("font-weight", "700")]},
+                        {"selector": "thead th", "props": [("background-color", "#eef4f7"), ("color", "#13293d"), ("font-weight", "700")]},
                         {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
-                        {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f8fafc")]},
-                        {"selector": "td, th", "props": [("border-color", "#e2e8f0")]},
+                        {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f7fafb")]},
+                        {"selector": "td, th", "props": [("border-color", "#d8e2e8")]},
                     ]
                 )
-                .set_properties(**{"background-color": "#ffffff", "color": "#0f172a"})
+                .set_properties(**{"background-color": "#ffffff", "color": "#13293d"})
             )
             st.dataframe(root_styler, use_container_width=True, hide_index=True)
     elif section_mode == "점도 등급 안정화 판정":
@@ -1595,13 +1677,13 @@ with lower_right:
                     .format({"현재 투입량": "{:.2f}", "권장 목표값": "{:.2f}", "권장 변경량": "{:.2f}", "레드라인": "{:.2f}"})
                     .set_table_styles(
                         [
-                            {"selector": "thead th", "props": [("background-color", "#f1f5f9"), ("color", "#0f172a"), ("font-weight", "700")]},
+                            {"selector": "thead th", "props": [("background-color", "#eef4f7"), ("color", "#13293d"), ("font-weight", "700")]},
                             {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
-                            {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f8fafc")]},
-                            {"selector": "td, th", "props": [("border-color", "#e2e8f0")]},
+                            {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f7fafb")]},
+                            {"selector": "td, th", "props": [("border-color", "#d8e2e8")]},
                         ]
                     )
-                    .set_properties(**{"background-color": "#ffffff", "color": "#0f172a"})
+                    .set_properties(**{"background-color": "#ffffff", "color": "#13293d"})
                 )
                 st.dataframe(guide_styler, use_container_width=True, hide_index=True)
 
@@ -1609,9 +1691,9 @@ with lower_right:
         if grade_msg:
             st.info("점도 상태 계산이 불완전해 결론 확정이 어렵습니다. 데이터 확인이 필요합니다.")
         else:
-            current_type_color = "#dc2626"
-            target_type_color = "#16a34a"
-            grade_color = "#16a34a" if str(grade) == "안정" else "#dc2626"
+            current_type_color = "#bb4b4b"
+            target_type_color = "#567c70"
+            grade_color = "#567c70" if str(grade) == "안정" else "#bb4b4b"
             type_html = (
                 "타입 상태: 현재 "
                 f"<span style='color:{current_type_color}; font-weight:900;'>{type_now}</span> / 목표 "
@@ -1732,20 +1814,8 @@ with action_left:
 
         sim_df = pd.DataFrame(adjust_rows, columns=["원성분", "성분", "현재", "변경량", "변경률(%)", "시뮬레이션"])
         sim_view = sim_df[["성분", "현재", "변경량", "시뮬레이션"]].copy()
-        sim_styler = (
-            sim_view.style
-            .format({"현재": "{:.2f}", "변경량": "{:.2f}", "시뮬레이션": "{:.2f}"})
-            .set_table_styles(
-                [
-                    {"selector": "thead th", "props": [("background-color", "#f1f5f9"), ("color", "#0f172a"), ("font-weight", "700")]},
-                    {"selector": "tbody tr:nth-child(odd) td", "props": [("background-color", "#ffffff")]},
-                    {"selector": "tbody tr:nth-child(even) td", "props": [("background-color", "#f8fafc")]},
-                    {"selector": "td, th", "props": [("border-color", "#e2e8f0")]},
-                ]
-            )
-            .set_properties(**{"background-color": "#ffffff", "color": "#0f172a"})
-        )
-        st.table(sim_styler)
+        sim_styler = sim_view.style.format({"현재": "{:.2f}", "변경량": "{:.2f}", "시뮬레이션": "{:.2f}"})
+        st.table(apply_brand_table_style(sim_styler))
         auto_note = st.session_state.get(f"auto_plan_note_{selected_batch_id}")
         if auto_note:
             st.caption(auto_note)
@@ -1756,8 +1826,8 @@ with action_left:
             goal2 = (grade_from_score(float(sim_estimated_score_global)) == "안정") if sim_estimated_score_global is not None else False
             g1_txt = "달성" if goal1 else "미달성"
             g2_txt = "달성" if goal2 else "미달성"
-            g1_color = "#16a34a" if goal1 else "#dc2626"
-            g2_color = "#16a34a" if goal2 else "#dc2626"
+            g1_color = "#567c70" if goal1 else "#bb4b4b"
+            g2_color = "#567c70" if goal2 else "#bb4b4b"
             st.markdown(
                 f"""
                 <div class='panel'>
